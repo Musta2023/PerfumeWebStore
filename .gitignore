@@ -4,11 +4,13 @@ frontend/node_modules/
 
 # Env files
 .env
+.env.local
 frontend/.env
 
 # Builds
 frontend/dist/
 dist/
+.vercel
 
 # Logs
 npm-debug.log*
@@ -18,3 +20,7 @@ yarn-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Documentation (not needed for deployment)
+*.md
+!README.md
