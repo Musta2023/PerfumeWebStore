@@ -4,6 +4,13 @@ dotenv.config();
 
 export const client = new Redis(process.env.UPSTASH_REDIS_URL);
 
+client.on('error', (err) => {
+    console.error('Redis connection error:', err);
+    if (err.message.includes('ENOTFOUND')) {
+        console.error('This looks like a DNS issue. Please check the hostname in your UPSTASH_REDIS_URL.');
+    }
+});
+
 export const redis = {
     set: async (key, value, ...args) => {
         return await client.set(key, value, ...args);   
